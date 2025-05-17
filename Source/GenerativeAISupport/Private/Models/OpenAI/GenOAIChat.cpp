@@ -58,7 +58,8 @@ void UGenOAIChat::MakeRequest(const FGenChatSettings& ChatSettings,
 
 	const TSharedPtr<FJsonObject> JsonPayload = MakeShareable(new FJsonObject());
 	JsonPayload->SetStringField(TEXT("model"), MutableSettings.Model);
-	JsonPayload->SetNumberField(TEXT("max_completion_tokens"), MutableSettings.MaxTokens);
+        // OpenAI uses the parameter name "max_tokens" for token limits
+        JsonPayload->SetNumberField(TEXT("max_tokens"), MutableSettings.MaxTokens);
 
 	TArray<TSharedPtr<FJsonValue>> MessagesArray;
 	for (const auto& [Role, Content] : MutableSettings.Messages)
