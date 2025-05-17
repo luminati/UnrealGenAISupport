@@ -7,6 +7,7 @@ from typing import Dict, Any, Tuple, List, Optional
 
 # Import handlers
 from handlers import basic_commands, actor_commands, blueprint_commands, python_commands
+from handlers import material_commands
 from handlers import ui_commands
 from utils import logging as log
 
@@ -27,6 +28,8 @@ class CommandDispatcher:
             # Basic object commands
             "spawn": basic_commands.handle_spawn,
             "create_material": basic_commands.handle_create_material,
+            "create_material_node": material_commands.handle_create_material_node,
+            "get_material_nodes": material_commands.handle_get_material_nodes,
             "modify_object": actor_commands.handle_modify_object,
 
             # Blueprint commands
@@ -260,7 +263,7 @@ def initialize_server():
 
     log.log_info("Unreal Engine AI command server initialized successfully")
     log.log_info("Available commands:")
-    log.log_info("  - Basic: handshake, spawn, create_material, modify_object")
+    log.log_info("  - Basic: handshake, spawn, create_material, create_material_node, get_material_nodes, modify_object")
     log.log_info("  - Blueprint: create_blueprint, add_component, add_variable, add_function, add_node, connect_nodes, compile_blueprint, spawn_blueprint, add_nodes_bulk, connect_nodes_bulk")
 
 # Auto-start the server when this module is imported

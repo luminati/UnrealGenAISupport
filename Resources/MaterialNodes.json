@@ -1,0 +1,5 @@
+{
+  "generated": false,
+  "note": "Run `python utils/generate_material_nodes.py` inside Unreal Editor to regenerate with real data.",
+  "nodes": []
+}
