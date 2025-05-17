@@ -341,6 +341,46 @@ def create_material(material_name: str, color: list) -> str:
         return f"Failed to create material: {response.get('error', 'Unknown error')}"
 
 
+@mcp.tool()
+def create_material_node(material_path: str, node_type: str,
+                         node_position: list = [0, 0], node_properties: dict = None) -> str:
+    """Create a material expression node on an existing material.
+
+    Args:
+        material_path: Path to the material asset (e.g., "/Game/Materials/M_Mat").
+        node_type: Class name of the material node (e.g., "MaterialExpressionMultiply").
+        node_position: [X, Y] position of the node in the material graph.
+        node_properties: Optional dictionary of properties to set on the node.
+
+    Returns:
+        Success message with the node GUID or an error message.
+    """
+    command = {
+        "type": "create_material_node",
+        "material_path": material_path,
+        "node_type": node_type,
+        "node_position": node_position,
+        "node_properties": node_properties or {}
+    }
+
+    response = send_to_unreal(command)
+    if response.get("success"):
+        guid = response.get("node_guid")
+        msg = response.get("message", f"Created node {node_type}")
+        return f"{msg} (GUID: {guid})" if guid else msg
+    else:
+        return f"Failed to create material node: {response.get('error', 'Unknown error')}"
+
+
+@mcp.tool()
+def get_material_nodes() -> str:
+    """Retrieve a list of available material node classes and their properties."""
+    command = {"type": "get_material_nodes"}
+    response = send_to_unreal(command)
+    return json.dumps(response.get("nodes", [])) if response.get("success") else (
+        f"Failed to get material nodes: {response.get('error', 'Unknown error')}")
+
+
 #
 # Blueprint Commands
 #
