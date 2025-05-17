@@ -75,7 +75,8 @@ void UGenOAIStructuredOpService::MakeRequest(const FGenOAIStructuredChatSettings
 
     ResponseFormat->SetObjectField(TEXT("json_schema"), RootSchemaObject);
     JsonPayload->SetObjectField(TEXT("response_format"), ResponseFormat);
-    JsonPayload->SetNumberField(TEXT("max_completion_tokens"), StructuredChatSettings.ChatSettings.MaxTokens);
+    // Use the standard "max_tokens" parameter used by OpenAI
+    JsonPayload->SetNumberField(TEXT("max_tokens"), StructuredChatSettings.ChatSettings.MaxTokens);
     //set messages field, and append "Generate Response in JSON only." to the prompt
     TArray<TSharedPtr<FJsonValue>> MessagesArray;
     for (const FGenChatMessage& Message : StructuredChatSettings.ChatSettings.Messages)
