@@ -23,7 +23,11 @@ public:
      * @param UserWidgetPath Path to the User Widget Blueprint (e.g., "/Game/UI/WBP_MainMenu").
      * @param WidgetClassName Class name of the widget to add (e.g., "TextBlock", "Button", "Image", "CanvasPanel").
      * @param WidgetName Name for the new widget variable in the Blueprint (e.g., "TitleText", "StartButton").
-     * @param ParentWidgetName Optional name of the parent widget to attach to. If empty, tries to attach to the root or first CanvasPanel.
+     * @param ParentWidgetName Optional name of the parent widget to attach to.
+     *                         When empty, attaches to the root panel if it is a
+     *                         PanelWidget, otherwise the first CanvasPanel is
+     *                         searched. If no parent is found and the new widget
+     *                         is a panel with an empty tree, it becomes the root.
      * @return JSON string indicating success or failure, including the actual name assigned.
      */
     UFUNCTION(BlueprintCallable, Category = "MCP | UI Generation")
