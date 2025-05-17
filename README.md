@@ -578,7 +578,7 @@ python <your_project_directoy>/Plugins/GenerativeAISupport/Content/Python/mcp_se
 - Nodes fail to connect properly with MCP
 - No undo redo support for MCP
 - No streaming support for Deepseek reasoning model
-- No complex material generation support for the create material tool
+ - No complex material generation support for the create material tool *(basic material node creation is now available via the `create_material_node` MCP command. See `Docs/MaterialNodes.md` for details)*
 - Issues with running some llm generated valid python scripts
 - When LLM compiles a blueprint no proper error handling in its response
 - Issues spawning certain nodes, especially with getters and setters
