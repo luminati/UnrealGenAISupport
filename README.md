@@ -213,7 +213,7 @@ For test builds you can call the `GenSecureKey::SetGenAIApiKeyRuntime` either in
 > If your project only uses the LLM APIs and not the MCP, you can skip this section.
 
 > [!CAUTION]  
-> Discalimer: If you are using the MCP feature of the plugin, it will directly let the Claude Desktop App control your Unreal Engine project.
+> Disclaimer: If you are using the MCP feature of the plugin, it will directly let the Claude Desktop App control your Unreal Engine project.
 > Make sure you are aware of the security risks and only use it in a controlled environment.
 >
 > Please backup your project before using the MCP feature and use version control to track changes.
